@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { TeacherService } from "../services/services.service";
+import { TeacherResponse } from "../models/teacher.model";
 
 interface Person {
 	key: string;
@@ -12,7 +14,7 @@ interface Person {
 	templateUrl: "./teacher-list.component.html",
 	styleUrl: "./teacher-list.component.less",
 })
-export class TeacherListComponent {
+export class TeacherListComponent implements OnInit {
 	listOfData: Person[] = [
 		{
 			key: "1",
@@ -69,4 +71,12 @@ export class TeacherListComponent {
 			address: "Sidney No. 1 Lake Park",
 		},
 	];
+	teachers: TeacherResponse[] = [];
+
+	constructor(private $teacherService: TeacherService) {}
+	ngOnInit(): void {
+		this.$teacherService.getAll().subscribe((v) => {
+			this.teachers = v;
+		});
+	}
 }
