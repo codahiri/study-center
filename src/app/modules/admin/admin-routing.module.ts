@@ -6,11 +6,13 @@ const routes: Routes = [
 	{
 		path: "",
 		component: AdminComponent,
-	},
-	{
-		path: "teacher",
-		loadChildren: () =>
-			import("./teacher/teacher.module").then((m) => m.TeacherModule),
+		children: [
+			{
+				path: "teacher",
+				loadChildren: () =>
+					import("./teacher/teacher.module").then((m) => m.TeacherModule),
+			},
+		],
 	},
 ];
 
