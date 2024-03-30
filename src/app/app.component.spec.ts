@@ -1,7 +1,8 @@
 import { TestBed } from "@angular/core/testing";
-import { AppComponent } from "./app.component";
 import { RouterModule } from "@angular/router";
+import { AppComponent } from "./app.component";
 import { AdminComponent } from "./modules/admin/admin.component";
+import { ClientComponent } from "./modules/client/client.component";
 
 describe("AppComponent", () => {
 	beforeEach(() => {
@@ -10,6 +11,7 @@ describe("AppComponent", () => {
 				RouterModule.forRoot([
 					{ path: "", component: AppComponent },
 					{ path: "admin", component: AdminComponent },
+					{ path: "client", component: ClientComponent },
 				]),
 			],
 		});
