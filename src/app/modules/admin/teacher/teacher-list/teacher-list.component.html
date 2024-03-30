@@ -1,11 +1,27 @@
+<button
+	[routerLink]="['add']"
+	nz-button
+	nzType="primary"
+	class="add-btn"
+>
+	Add teacher
+</button>
+
 <nz-table
 	#basicTable
 	[nzData]="teachers"
+	[nzPageSize]="5"
+	[nzScroll]="{ y: '340px' }"
 >
 	<thead>
 		<tr>
 			<th>ID</th>
-			<th>Name</th>
+			<th
+				nzColumnKey="name"
+				[nzSortFn]="true"
+			>
+				Name
+			</th>
 			<th>Username</th>
 			<th>Email</th>
 			<th>Phone</th>
