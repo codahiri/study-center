@@ -1,15 +1,8 @@
 import { Component } from "@angular/core";
-import {
-	AbstractControl,
-	AsyncValidatorFn,
-	FormControl,
-	FormGroup,
-	NonNullableFormBuilder,
-	ValidationErrors,
-	ValidatorFn,
-	Validators,
-} from "@angular/forms";
-import { Observable, Observer } from "rxjs";
+import { FormBuilder, Validators } from "@angular/forms";
+import { TeacherService } from "../services/services.service";
+import { TeacherRequest } from "../models/teacher.model";
+import { ActivatedRoute, Router } from "@angular/router";
 
 @Component({
 	selector: "app-add-edit-teacher",
@@ -17,58 +10,41 @@ import { Observable, Observer } from "rxjs";
 	styleUrls: ["./add-edit-teacher.component.less"],
 })
 export class AddEditTeacherComponent {
-	validateForm: FormGroup<{
-		userName: FormControl<string>;
-		email: FormControl<string>;
-		password: FormControl<string>;
-		confirm: FormControl<string>;
-		comment: FormControl<string>;
-	}>;
+	form = this.fb.nonNullable.group({
+		name: ["", Validators.required],
+		username: ["", Validators.required],
+		email: ["", Validators.required],
+		phone: ["", Validators.required],
+		website: ["", Validators.required],
+	});
+	constructor(
+		private fb: FormBuilder,
+		private $teacherService: TeacherService,
+		private router: Router,
+		private route: ActivatedRoute
+	) {}
 
-	submitForm(): void {
-		console.log("submit", this.validateForm.value);
-	}
-
-	resetForm(e: MouseEvent): void {
-		e.preventDefault();
-		this.validateForm.reset();
-	}
-
-	validateConfirmPassword(): void {
-		setTimeout(() =>
-			this.validateForm.controls.confirm.updateValueAndValidity()
-		);
-	}
-
-	userNameAsyncValidator: AsyncValidatorFn = (control: AbstractControl) =>
-		new Observable((observer: Observer<ValidationErrors | null>) => {
-			setTimeout(() => {
-				if (control.value === "JasonWood") {
-					// you have to return `{error: true}` to mark it as an error event
-					observer.next({ error: true, duplicated: true });
-				} else {
-					observer.next(null);
+	add(): void {
+		if (this.form.valid) {
+			const request: TeacherRequest = this.form.getRawValue();
+			this.$teacherService.add(request).subscribe((response) => {
+				if (response) {
+					this.router.navigate(["../"], { relativeTo: this.route });
 				}
-				observer.complete();
-			}, 1000);
-		});
-
-	confirmValidator: ValidatorFn = (control: AbstractControl) => {
-		if (!control.value) {
-			return { error: true, required: true };
-		} else if (control.value !== this.validateForm.controls.password.value) {
-			return { confirm: true, error: true };
+			});
+		} else {
+			Object.values(this.form.controls).forEach((control) => {
+				if (control.invalid) {
+					control.markAsDirty();
+					control.updateValueAndValidity({ onlySelf: true });
+				}
+			});
+			alert(`This form is ${this.form.status}`);
 		}
-		return {};
-	};
+	}
 
-	constructor(private fb: NonNullableFormBuilder) {
-		this.validateForm = this.fb.group({
-			userName: ["", [Validators.required], [this.userNameAsyncValidator]],
-			email: ["", [Validators.email, Validators.required]],
-			password: ["", [Validators.required]],
-			confirm: ["", [this.confirmValidator]],
-			comment: ["", [Validators.required]],
-		});
+	clear(e: MouseEvent): void {
+		e.preventDefault();
+		this.form.reset();
 	}
 }

@@ -1,143 +1,124 @@
+<h1>Add Teacher</h1>
+
 <form
+	[formGroup]="form"
 	nz-form
-	[formGroup]="validateForm"
-	(ngSubmit)="submitForm()"
 >
+	<!-- NAME -->
 	<nz-form-item>
 		<nz-form-label
-			[nzSpan]="7"
-			nzRequired
+			[nzSpan]="6"
+			nzFor="name"
+			>Name</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your name"
+				type="text"
+				formControlName="name"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!-- USERNAME -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="username"
 			>Username</nz-form-label
 		>
 		<nz-form-control
-			[nzSpan]="12"
-			nzHasFeedback
-			nzValidatingTip="Validating..."
-			[nzErrorTip]="userErrorTpl"
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
 		>
 			<input
 				nz-input
-				formControlName="userName"
-				placeholder="async validate try to write JasonWood"
+				placeholder="Enter your username"
+				type="text"
+				formControlName="username"
 			/>
-			<ng-template
-				#userErrorTpl
-				let-control
-			>
-				@if (control.errors?.['required']) { Please input your username! } @if
-				(control.errors?.['duplicated']) { The username is redundant! }
-			</ng-template>
 		</nz-form-control>
 	</nz-form-item>
+	<!-- EMAIL -->
 	<nz-form-item>
 		<nz-form-label
-			[nzSpan]="7"
-			nzRequired
-			>E-mail</nz-form-label
+			[nzSpan]="6"
+			nzFor="email"
+			>Email</nz-form-label
 		>
 		<nz-form-control
-			[nzSpan]="12"
-			nzHasFeedback
-			[nzErrorTip]="emailErrorTpl"
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
 		>
 			<input
 				nz-input
-				formControlName="email"
-				placeholder="email"
+				placeholder="Enter your email"
 				type="email"
+				formControlName="email"
 			/>
-			<ng-template
-				#emailErrorTpl
-				let-control
-			>
-				@if (control.errors?.['email']) { The input is not valid E-mail! } @if
-				(control.errors?.['required']) { Please input your E-mail! }
-			</ng-template>
 		</nz-form-control>
 	</nz-form-item>
+	<!-- PHONE -->
 	<nz-form-item>
 		<nz-form-label
-			[nzSpan]="7"
-			nzRequired
-			>Password</nz-form-label
+			[nzSpan]="6"
+			nzFor="phone"
+			>Phone</nz-form-label
 		>
 		<nz-form-control
-			[nzSpan]="12"
-			nzHasFeedback
-			nzErrorTip="Please input your password!"
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
 		>
 			<input
 				nz-input
-				type="password"
-				formControlName="password"
-				(ngModelChange)="validateConfirmPassword()"
+				placeholder="Enter your phone"
+				type="text"
+				formControlName="phone"
 			/>
 		</nz-form-control>
 	</nz-form-item>
+	<!-- WEBSITE -->
 	<nz-form-item>
 		<nz-form-label
-			[nzSpan]="7"
-			nzRequired
-			>Confirm Password</nz-form-label
+			[nzSpan]="6"
+			nzFor="website"
+			>Website</nz-form-label
 		>
 		<nz-form-control
-			[nzSpan]="12"
-			nzHasFeedback
-			[nzErrorTip]="passwordErrorTpl"
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
 		>
 			<input
 				nz-input
-				type="password"
-				formControlName="confirm"
-				placeholder="confirm your password"
+				placeholder="Enter your website"
+				type="text"
+				formControlName="website"
 			/>
-			<ng-template
-				#passwordErrorTpl
-				let-control
-			>
-				@if (control.errors?.['required']) { Please confirm your password! } @if
-				(control.errors?.['confirm']) { Password is inconsistent! }
-			</ng-template>
 		</nz-form-control>
 	</nz-form-item>
-	<nz-form-item>
-		<nz-form-label
-			[nzSpan]="7"
-			nzRequired
-			>Comment</nz-form-label
-		>
+	<!-- ADD, CLEAR BTN -->
+	<nz-form-item class="form-item__btn">
 		<nz-form-control
-			[nzSpan]="12"
-			nzHasFeedback
-			nzErrorTip="Please write something here!"
-		>
-			<nz-textarea-count [nzMaxCharacterCount]="2000">
-				<textarea
-					formControlName="comment"
-					nz-input
-					rows="2"
-					placeholder="write any thing"
-				></textarea>
-			</nz-textarea-count>
-		</nz-form-control>
-	</nz-form-item>
-	<nz-form-item>
-		<nz-form-control
-			[nzOffset]="7"
-			[nzSpan]="12"
+			nzErrorTip="Required field!"
+			nzSpan="14"
 		>
 			<button
+				type="submit"
 				nz-button
 				nzType="primary"
-				[disabled]="!validateForm.valid"
+				(click)="add()"
+				[disabled]="!form.valid"
 			>
-				Submit
+				Add
 			</button>
 			<button
 				nz-button
-				(click)="resetForm($event)"
+				(click)="clear($event)"
 			>
-				Reset
+				Clear
 			</button>
 		</nz-form-control>
 	</nz-form-item>
