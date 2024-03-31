@@ -11,9 +11,21 @@ export class TeacherListComponent implements OnInit {
 	teachers: TeacherResponse[] = [];
 
 	constructor(private $teacherService: TeacherService) {}
+	/**
+	 *
+	 */
 	ngOnInit(): void {
+		this.getAllData();
+	}
+
+	private getAllData() {
 		this.$teacherService.getAll().subscribe((v) => {
 			this.teachers = v;
 		});
+	}
+
+	delete(id: string) {
+		this.$teacherService.delete(id).subscribe();
+		this.getAllData();
 	}
 }

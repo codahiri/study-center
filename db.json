@@ -1,44 +1,12 @@
 {
   "teachers": [
     {
-      "id": "1",
+      "id": "3742",
       "name": "Palonchi",
       "username": "palonchi",
-      "email": "palonchi@gmail.com",
-      "phone": "9998991478952",
+      "email": "palonchi",
+      "phone": "998999999999",
       "website": "palonchi.com"
-    },
-    {
-      "id": "e521",
-      "name": "Mirsoli Mirsultonov",
-      "username": "wwfw",
-      "email": "biodasturchi@gmail.com",
-      "phone": "8993490698",
-      "website": "sl.com"
-    },
-    {
-      "id": "e0f1",
-      "name": "Mirsoli Mirsultonov",
-      "username": "ameil",
-      "email": "biodasturchi@gmail.com",
-      "phone": "8993490698",
-      "website": "aksks.com"
-    },
-    {
-      "id": "7b96",
-      "name": "test",
-      "username": "test",
-      "email": "test@mail.com",
-      "phone": "54646466",
-      "website": "test.com"
-    },
-    {
-      "id": "2f50",
-      "name": "Mirsoli Mirsultonov",
-      "username": "eegeg",
-      "email": "biodasturchi@gmail.com",
-      "phone": "8993490698",
-      "website": "wwwwwww.com"
     }
   ]
 }

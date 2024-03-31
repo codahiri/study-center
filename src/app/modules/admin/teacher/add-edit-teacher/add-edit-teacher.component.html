@@ -1,4 +1,4 @@
-<h1>Add Teacher</h1>
+<h1>{{ isEdit ? "Add" : "Edit" }} Teacher</h1>
 
 <form
 	[formGroup]="form"
@@ -109,10 +109,11 @@
 				type="submit"
 				nz-button
 				nzType="primary"
-				(click)="add()"
+				(click)="submit()"
 				[disabled]="!form.valid"
+				[routerLink]="[isEdit ? '../../' : '../']"
 			>
-				Add
+				{{ isEdit ? "Edit" : "Add" }}
 			</button>
 			<button
 				nz-button

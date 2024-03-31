@@ -6,7 +6,10 @@ import { TeacherRequest, TeacherResponse } from "../models/teacher.model";
 	providedIn: "root",
 })
 export class TeacherService {
+	// local
 	url = "http://localhost:3000/teachers";
+	// global
+	// url = "https://jsonplaceholder.typicode.com/users"
 
 	constructor(private http: HttpClient) {}
 
@@ -23,6 +26,28 @@ export class TeacherService {
 	 * @returns
 	 */
 	add(model: TeacherRequest) {
-		return this.http.post(this.url, model);
+		return this.http.post<TeacherResponse>(this.url, model);
+	}
+	/**
+	 *
+	 * @param id
+	 * @returns
+	 */
+	getById(id: string) {
+		return this.http.get<TeacherResponse>(`${this.url}/${id}`);
+	}
+	/**
+	 *
+	 */
+	edit(id: string, model: TeacherRequest) {
+		return this.http.put<TeacherResponse>(`${this.url}/${id}`, model);
+	}
+	/**
+	 *
+	 * @param id
+	 * @returns
+	 */
+	delete(id: string) {
+		return this.http.delete<TeacherResponse>(`${this.url}/${id}`);
 	}
 }
