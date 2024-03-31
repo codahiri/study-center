@@ -16,16 +16,11 @@
 	<thead>
 		<tr>
 			<th>ID</th>
-			<th
-				nzColumnKey="name"
-				[nzSortFn]="true"
-			>
-				Name
-			</th>
+			<th>Name</th>
 			<th>Username</th>
 			<th>Email</th>
 			<th>Phone</th>
-			<th>Address</th>
+			<th>Website</th>
 			<th>Actions</th>
 		</tr>
 	</thead>
@@ -36,17 +31,23 @@
 			<td>{{ data.username }}</td>
 			<td>{{ data.email }}</td>
 			<td>{{ data.phone }}</td>
-			<td>{{ data.address.city }}</td>
+			<td>{{ data.website }}</td>
 			<td>
 				<nz-button-group>
-					<button nz-button>
+					<button
+						nz-button
+						[routerLink]="['edit/', data.id]"
+					>
 						<span
 							nz-icon
 							nzType="edit"
 							nzTheme="twotone"
 						></span>
 					</button>
-					<button nz-button>
+					<button
+						nz-button
+						(click)="delete(data.id)"
+					>
 						<span
 							nz-icon
 							nzType="delete"
