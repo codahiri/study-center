@@ -5,7 +5,7 @@ import { StudentResponse } from "../../models/models";
 @Component({
 	selector: "app-student-list",
 	templateUrl: "./student-list.component.html",
-	styleUrl: "./student-list.component.less",
+	styles: [``],
 })
 export class StudentListComponent implements OnInit {
 	students: StudentResponse[] = [];

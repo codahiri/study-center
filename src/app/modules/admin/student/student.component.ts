@@ -1,10 +1,7 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 
 @Component({
-  selector: 'app-student',
-  templateUrl: './student.component.html',
-  styleUrl: './student.component.less'
+	selector: "app-student",
+	template: ``,
 })
-export class StudentComponent {
-
-}
+export class StudentComponent {}
