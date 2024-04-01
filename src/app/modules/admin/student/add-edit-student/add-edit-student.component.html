@@ -1,0 +1,197 @@
+<h1>Teacher</h1>
+
+<form
+	[formGroup]="form"
+	nz-form
+>
+	<!-- FIRST_NAME -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="first_name"
+			>First name</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your first name"
+				type="text"
+				formControlName="first_name"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!-- LAST_NAME -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="last_name"
+			>Last name</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your last username"
+				type="text"
+				formControlName="last_name"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!--AGE  -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="age"
+			>Age</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your last age"
+				type="text"
+				formControlName="age"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!-- EMAIL -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="email"
+			>Email</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your email"
+				type="email"
+				formControlName="email"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!-- MAJOR -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="major"
+			>Major</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your major"
+				type="text"
+				formControlName="major"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!-- GPA -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="gpa"
+			>GPA</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your gpa"
+				type="text"
+				formControlName="gpa"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!-- Enrolment date -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="enrollment_date"
+			>Enrollment date</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your enrollment date"
+				type="text"
+				formControlName="enrollment_date"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!-- Graduation date -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="graduation_date"
+			>Graduation date</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your graduation date"
+				type="text"
+				formControlName="graduation_date"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!-- University name -->
+	<nz-form-item>
+		<nz-form-label
+			[nzSpan]="6"
+			nzFor="university_name"
+			>University name</nz-form-label
+		>
+		<nz-form-control
+			nzErrorTip="Required field!"
+			[nzSpan]="14"
+		>
+			<input
+				nz-input
+				placeholder="Enter your university name"
+				type="text"
+				formControlName="university_name"
+			/>
+		</nz-form-control>
+	</nz-form-item>
+	<!-- ADD, CLEAR BTN -->
+	<nz-form-item class="form-item__btn">
+		<nz-form-control
+			nzErrorTip="Required field!"
+			nzSpan="14"
+		>
+			<button
+				type="submit"
+				nz-button
+				nzType="primary"
+				(click)="submit()"
+				[routerLink]="['../']"
+				[disabled]="!form.valid"
+			>
+				Add
+			</button>
+			<button nz-button>Clear</button>
+		</nz-form-control>
+	</nz-form-item>
+</form>

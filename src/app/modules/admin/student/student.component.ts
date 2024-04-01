@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 
 @Component({
-	selector: "app-teacher",
+	selector: "app-student",
 	template: ``,
 })
-export class TeacherComponent {}
+export class StudentComponent {}

@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { TeacherService } from "../services/services.service";
-import { TeacherRequest, TeacherResponse } from "../models/teacher.model";
+import { AdminService } from "../../services/services";
+import { TeacherRequest, TeacherResponse } from "../../models/models";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -30,7 +30,7 @@ export class AddEditTeacherComponent {
 
 	constructor(
 		private fb: FormBuilder,
-		private $teacherService: TeacherService,
+		private $teacherService: AdminService,
 		private route: ActivatedRoute
 	) {
 		if (this.id) {

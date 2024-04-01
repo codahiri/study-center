@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { TeacherService } from "../services/services.service";
-import { TeacherResponse } from "../models/teacher.model";
+import { AdminService } from "../../services/services";
+import { TeacherResponse } from "../../models/models";
 
 @Component({
 	selector: "app-teacher-list",
@@ -10,7 +10,7 @@ import { TeacherResponse } from "../models/teacher.model";
 export class TeacherListComponent implements OnInit {
 	teachers: TeacherResponse[] = [];
 
-	constructor(private $teacherService: TeacherService) {}
+	constructor(private $teacherService: AdminService) {}
 	/**
 	 *
 	 */
