@@ -18,3 +18,5 @@ To begin using the Study-Center, clone the repository and follow the setup instr
 Contributions are welcome! If you're interested in enhancing the Study-Center, please read the CONTRIBUTING guide for details on submitting pull requests.
 
 Join us in creating the ultimate learning companion for students worldwide!
+
+by [@ilosrim](https://t.me/ilosrim)
