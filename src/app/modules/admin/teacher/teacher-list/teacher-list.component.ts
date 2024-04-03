@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AdminService } from "../../services/services";
 import { TeacherResponse } from "../../models/models";
+import { Observable } from "rxjs";
 
 @Component({
 	selector: "app-teacher-list",
@@ -8,7 +9,7 @@ import { TeacherResponse } from "../../models/models";
 	styleUrl: "./teacher-list.component.less",
 })
 export class TeacherListComponent implements OnInit {
-	teachers: TeacherResponse[] = [];
+	teachers$!: Observable<TeacherResponse[]>;
 
 	constructor(private $teacherService: AdminService) {}
 	/**
@@ -19,9 +20,7 @@ export class TeacherListComponent implements OnInit {
 	}
 
 	private getAllData() {
-		this.$teacherService.getAll().subscribe((v) => {
-			this.teachers = v;
-		});
+		this.teachers$ = this.$teacherService.getAll();
 	}
 
 	delete(id: string) {
