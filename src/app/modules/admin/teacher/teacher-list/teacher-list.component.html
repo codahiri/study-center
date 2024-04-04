@@ -7,55 +7,83 @@
 	Add teacher
 </button>
 
-<nz-table
-	#basicTable
-	[nzData]="teachers"
-	[nzPageSize]="5"
-	[nzScroll]="{ y: '340px' }"
->
-	<thead>
-		<tr>
-			<th>ID</th>
-			<th>Name</th>
-			<th>Username</th>
-			<th>Email</th>
-			<th>Phone</th>
-			<th>Website</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let data of basicTable.data">
-			<td>{{ data.id }}</td>
-			<td>{{ data.name }}</td>
-			<td>{{ data.username }}</td>
-			<td>{{ data.email }}</td>
-			<td>{{ data.phone }}</td>
-			<td>{{ data.website }}</td>
-			<td>
-				<nz-button-group>
-					<button
-						nz-button
-						[routerLink]="['edit/', data.id]"
-					>
-						<span
-							nz-icon
-							nzType="edit"
-							nzTheme="twotone"
-						></span>
-					</button>
-					<button
-						nz-button
-						(click)="delete(data.id)"
-					>
-						<span
-							nz-icon
-							nzType="delete"
-							nzTheme="twotone"
-						></span>
-					</button>
-				</nz-button-group>
-			</td>
-		</tr>
-	</tbody>
-</nz-table>
+<ng-container *ngIf="teachers$ | async as teachers; else defaultMsg">
+	<nz-table
+		#basicTable
+		[nzData]="teachers"
+		[nzPageSize]="5"
+		[nzScroll]="{ y: '340px' }"
+	>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Website</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let data of basicTable.data">
+				<td>{{ data.id }}</td>
+				<td>{{ data.name }}</td>
+				<td>{{ data.username }}</td>
+				<td>{{ data.email }}</td>
+				<td>{{ data.phone }}</td>
+				<td>{{ data.website }}</td>
+				<td>
+					<nz-button-group>
+						<button
+							nz-button
+							[routerLink]="['edit/', data.id]"
+						>
+							<span
+								nz-icon
+								nzType="edit"
+								nzTheme="twotone"
+							></span>
+						</button>
+						<button
+							nz-button
+							(click)="delete(data.id)"
+						>
+							<span
+								nz-icon
+								nzType="delete"
+								nzTheme="twotone"
+							></span>
+						</button>
+					</nz-button-group>
+				</td>
+			</tr>
+		</tbody>
+	</nz-table>
+</ng-container>
+<ng-template #defaultMsg>
+	<nz-table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Username</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Website</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</nz-table>
+</ng-template>

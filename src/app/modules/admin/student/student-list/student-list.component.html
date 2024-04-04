@@ -7,61 +7,98 @@
 	Add student
 </button>
 
-<nz-table
-	#basicTable
-	[nzData]="students"
-	[nzPageSize]="5"
-	[nzScroll]="{ y: '340px', x: '1100px' }"
-	nzTableLayout="fixed"
->
-	<thead>
-		<tr>
-			<th nzLeft>Student ID</th>
-			<th>First name</th>
-			<th>Last name</th>
-			<th>Age</th>
-			<th>Email</th>
-			<th>Major</th>
-			<th>GPA</th>
-			<th nzEllipsis>Enrollment date</th>
-			<th nzEllipsis>Graduation date</th>
-			<th nzEllipsis>University name</th>
-			<th nzRight>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let data of basicTable.data">
-			<td nzLeft>{{ data.student_id }}</td>
-			<td>{{ data.first_name }}</td>
-			<td>{{ data.last_name }}</td>
-			<td>{{ data.age }}</td>
-			<td nzEllipsis>{{ data.email }}</td>
-			<td>{{ data.major }}</td>
-			<td>{{ data.gpa }}</td>
-			<td nzEllipsis>{{ data.enrollment_date }}</td>
-			<td nzEllipsis>{{ data.graduation_date }}</td>
-			<td nzEllipsis>{{ data.university_name }}</td>
-			<td nzRight>
-				<nz-button-group>
-					<button
-						nz-button
-						[routerLink]="['edit/', data.id]"
-					>
-						<span
-							nz-icon
-							nzType="edit"
-							nzTheme="twotone"
-						></span>
-					</button>
-					<button nz-button>
-						<span
-							nz-icon
-							nzType="delete"
-							nzTheme="twotone"
-						></span>
-					</button>
-				</nz-button-group>
-			</td>
-		</tr>
-	</tbody>
-</nz-table>
+<ng-container *ngIf="students$ | async as students; else defaultMsg">
+	<nz-table
+		#basicTable
+		[nzData]="students"
+		[nzPageSize]="5"
+		[nzScroll]="{ y: '340px', x: '1100px' }"
+		nzTableLayout="fixed"
+	>
+		<thead>
+			<tr>
+				<th nzLeft>Student ID</th>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>Age</th>
+				<th>Email</th>
+				<th>Major</th>
+				<th>GPA</th>
+				<th nzEllipsis>Enrollment date</th>
+				<th nzEllipsis>Graduation date</th>
+				<th nzEllipsis>University name</th>
+				<th nzRight>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let data of basicTable.data">
+				<td nzLeft>{{ data.student_id }}</td>
+				<td>{{ data.first_name }}</td>
+				<td>{{ data.last_name }}</td>
+				<td>{{ data.age }}</td>
+				<td nzEllipsis>{{ data.email }}</td>
+				<td>{{ data.major }}</td>
+				<td>{{ data.gpa }}</td>
+				<td nzEllipsis>{{ data.enrollment_date }}</td>
+				<td nzEllipsis>{{ data.graduation_date }}</td>
+				<td nzEllipsis>{{ data.university_name }}</td>
+				<td nzRight>
+					<nz-button-group>
+						<button
+							nz-button
+							[routerLink]="['edit/', data.id]"
+						>
+							<span
+								nz-icon
+								nzType="edit"
+								nzTheme="twotone"
+							></span>
+						</button>
+						<button nz-button>
+							<span
+								nz-icon
+								nzType="delete"
+								nzTheme="twotone"
+							></span>
+						</button>
+					</nz-button-group>
+				</td>
+			</tr>
+		</tbody>
+	</nz-table>
+</ng-container>
+
+<ng-template #defaultMsg>
+	<nz-table>
+		<thead>
+			<tr>
+				<th>Student ID</th>
+				<th>First name</th>
+				<th>Last name</th>
+				<th>Age</th>
+				<th>Email</th>
+				<th>Major</th>
+				<th>GPA</th>
+				<th>Enrollment date</th>
+				<th>Graduation date</th>
+				<th>University name</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+		</tbody>
+	</nz-table>
+</ng-template>
