@@ -39,7 +39,10 @@
 								"output": "/assets/"
 							}
 						],
-						"styles": ["src/styles.less"],
+						"styles": [
+							"src/styles.less",
+							"node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
+						],
 						"scripts": []
 					},
 					"configurations": {
@@ -91,14 +94,17 @@
 						"tsConfig": "tsconfig.spec.json",
 						"inlineStyleLanguage": "less",
 						"assets": ["src/favicon.ico", "src/assets"],
-						"styles": ["src/styles.less"],
+						"styles": [
+							"src/styles.less",
+							"node_modules/ng-zorro-antd/ng-zorro-antd.min.css"
+						],
 						"scripts": []
 					}
 				}
 			}
 		}
-  },
-  "cli": {
-    "analytics": false
-  }
+	},
+	"cli": {
+		"analytics": false
+	}
 }

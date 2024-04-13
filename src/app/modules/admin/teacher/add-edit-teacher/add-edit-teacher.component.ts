@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { AdminService } from "../../services/services";
-import { TeacherRequest, TeacherResponse } from "../../models/models";
 import { ActivatedRoute } from "@angular/router";
+import { TeacherService } from "../services/teacher.service";
+import { TeacherRequest, TeacherResponse } from "../models/teacher.model";
 
 @Component({
 	selector: "app-add-edit-teacher",
@@ -30,7 +30,7 @@ export class AddEditTeacherComponent {
 
 	constructor(
 		private fb: FormBuilder,
-		private $teacherService: AdminService,
+		private $teacherService: TeacherService,
 		private route: ActivatedRoute
 	) {
 		if (this.id) {
@@ -44,7 +44,7 @@ export class AddEditTeacherComponent {
 	 *
 	 * @param model
 	 */
-	setFormValues(model: TeacherResponse) {
+	private setFormValues(model: TeacherResponse) {
 		this.form.controls.name.setValue(model.name);
 		this.form.controls.username.setValue(model.username);
 		this.form.controls.email.setValue(model.email);

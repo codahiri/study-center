@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { AdminService } from "../../services/services";
-import { TeacherResponse } from "../../models/models";
 import { Observable } from "rxjs";
+import { TeacherService } from "../services/teacher.service";
+import { TeacherResponse } from "../models/teacher.model";
 
 @Component({
 	selector: "app-teacher-list",
@@ -11,7 +11,7 @@ import { Observable } from "rxjs";
 export class TeacherListComponent implements OnInit {
 	teachers$!: Observable<TeacherResponse[]>;
 
-	constructor(private $teacherService: AdminService) {}
+	constructor(private $teacherService: TeacherService) {}
 	/**
 	 *
 	 */
