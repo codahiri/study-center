@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { FormBuilder, Validators } from "@angular/forms";
-import { AdminService } from "../../services/services";
 import { ActivatedRoute } from "@angular/router";
-import { StudentRequest, StudentResponse } from "../../models/models";
+import { StudentRequest, StudentResponse } from "../../shared/models/models";
+import { StudentService } from "../services/student.service";
 
 @Component({
 	selector: "app-add-edit-student",
@@ -27,11 +27,11 @@ export class AddEditStudentComponent {
 	}
 	constructor(
 		private fb: FormBuilder,
-		private $studentService: AdminService,
+		private $studentService: StudentService,
 		private route: ActivatedRoute
 	) {
 		if (this.id) {
-			this.$studentService.getByIdStudent(this.id).subscribe((student) => {
+			this.$studentService.getById(this.id).subscribe((student) => {
 				this.setFormValues(student);
 			});
 		}
@@ -55,7 +55,7 @@ export class AddEditStudentComponent {
 			return;
 		}
 		const request: StudentRequest = this.form.getRawValue();
-		this.$studentService.addStudents(request).subscribe;
+		this.$studentService.add(request).subscribe;
 	}
 
 	private checked() {
@@ -66,5 +66,9 @@ export class AddEditStudentComponent {
 			}
 		});
 		alert(`This form is ${this.form.status}`);
+	}
+	clear(e: MouseEvent): void {
+		e.preventDefault();
+		this.form.reset();
 	}
 }

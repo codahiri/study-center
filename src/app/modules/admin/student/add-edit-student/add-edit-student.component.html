@@ -191,7 +191,12 @@
 			>
 				Add
 			</button>
-			<button nz-button>Clear</button>
+			<button
+				nz-button
+				(click)="clear($event)"
+			>
+				Clear
+			</button>
 		</nz-form-control>
 	</nz-form-item>
 </form>
